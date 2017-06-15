@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% include 'material/includes/material_css.html' %}
+{% include 'material/includes/material_js.html' %}
+
+<html>
+    <head>
+        <title>Wankgo {% block title %}Django Tango {% endblock %}</title>
+    </head>
+    
+    <body>
+        <div>
+            {% block body_block %}{% endblock %}
+        </dive>
+        <hr />
+    </body>
+</html>

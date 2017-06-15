@@ -1,0 +1,10 @@
+{% extends 'survey/base.html' %}
+
+{% block body_block %}
+    {% load material_form %}
+    <form method="POST">
+        {% csrf_token %}
+        {% form form=form %}{% endform %}
+        <button type="submit" name="_submit" class="btn">Submit</button>
+    </form>
+{% endblock %}
