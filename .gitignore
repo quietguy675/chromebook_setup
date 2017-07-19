@@ -1,3 +1,6 @@
+#Ignore the virtualenv
+venv
+
 #Ignore db files
 *.sqlite3
 
