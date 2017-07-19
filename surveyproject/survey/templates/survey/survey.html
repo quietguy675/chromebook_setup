@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body_block %}
+{% load humanize %}
+{% if do_form %}
+<p><i>Think about yesterday (or last school day), How did each kid do? (1-3). This is the {{ num_surveys|ordinal }} time you've done a survey this week!</i></p>
+<div class="container">
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {{ formset.non_form_errors.as_ul }}
+    <table class="table">
+    {% for question_label, fields in transposed_form.items %}
+        <tr>
+        <td>{{ question_label }}</td>
+        {% for field in fields %}
+        <td>{{ field }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+    <input type="submit" value="Submit">
+</form>
+</div>
+
+{% else %}
+You've done everything you needed today. So far you've done {{ num_surveys}} surveys this week, come back tomorrow!<br>
+<p><a href="{% url 'survey:survey' %}">Tomorrow? Click here to refresh</a></p>
+{% endif %}
+{% endblock %}

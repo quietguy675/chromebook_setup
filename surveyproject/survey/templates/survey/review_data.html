@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    {% if site_form %}
+    <form method="GET" action="">
+        {{ site_form }}
+        {{ day_form }}
+        <input type="submit" value="OK">
+    </form>
+    {% else %}
+    No data to review!
+    {% endif %}
+
+    {% if site %}
+    <p>Site: {{ site }}</p>
+    {% endif %}
+
+    {% if day %}
+    <p>Day: {{ day }}</p>
+    {% endif %}
+
+    {% if query %}
+    <table>
+    {% for person in query %}
+        {% if forloop.counter == 1 %}
+        <th>
+        <td>Student</td>
+        <td>Last Modification Date</td>
+        <td>Transitioned Well</td>
+        <td>Asked Why Questions</td>
+        <td>Creative Play</td>
+        <td>Listened Well</td>
+        <td>Not There</td>
+        </th>
+        {% endif %}
+        <tr>
+        <td></td>
+        <td>{{ person.student }}</td>
+        <td>{{ person.last_mod_date }}</td>
+        <td>{{ person.transitioned_well }}</td>
+        <td>{{ person.asked_why_questions }}</td>
+        <td>{{ person.creative_play }}</td>
+        <td>{{ person.listened_well }}</td>
+        <td>{{ person.not_there }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+
+    {{ other_nonsense }}
+    <form method="GET" action="{% url 'survey:export_report_data' %}">
+        <input type="submit" value="Export Survey Data">
+    </form>
+    <form method="GET" action="{% url 'survey:export_attendance_data' %}">
+        <input type="submit" value="Export Attendance Data">
+    </form>
+    <form method="GET" action="{% url 'survey:export_video_data' %}">
+        <input type="submit" value="Export Video Data">
+    </form>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="robots" content="noodp,noydir"/>
+        
+        <title>Prof Mares Survey</title>
+        {% load static %}
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/css/blog.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+        <script src="{% static 'assets/css/style.css' %}"></script>
+    </head>
+    
+    <body>
+        {% include "includes/menu.html" %}
+        <div class="container main__container">
+            {% block body_block %}{% endblock %}
+        </div>
+        <div class="blog-footer" id="non-printable">
+        <p>If you have any issues, please contact the study people at (123) 456-7890 or email study@wisc.edu</p>
+        <p>{% now "jS \o\f F\, Y" %}</p>
+        <p>Powered By <a href="https://www.djangoproject.com/" target="_blank">Django</a></p>
+        </div>
+        <script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+    </body>
+</html>

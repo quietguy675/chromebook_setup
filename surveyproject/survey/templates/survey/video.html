@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body_block %}
+{% load staticfiles %}
+<br>
+{% if description %}
+<table class="table">
+<tbody>
+    <tr>
+        <td><img src="{% static image %}" class="rounded height: 50%" alt="video"></td>
+        <td>{{ description }}</td>
+    </tr>
+</tbody>
+</table>
+{% else %}
+<img src="{% static image %}" class="rounded height: 80%" alt="video">
+{% endif %}
+<br>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form }}
+<input type="submit" value="Play Video">
+</form>
+<br>
+<p>
+<a href="{% url 'survey:survey' %}">Return to Surveys</a>
+</p>
+{% endblock %}
